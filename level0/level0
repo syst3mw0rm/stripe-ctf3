@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# Our test cases will always use the same dictionary file (with SHA1
+# 6b898d7c48630be05b72b3ae07c5be6617f90d8e). Running `test/harness`
+# will automatically download this dictionary for you if you don't
+# have it already.
+
+class Array
+  def binary_search(val, low=0, high=(length - 1))
+    return nil if high < low
+    mid = (low + high) / 2
+    case
+      when self[mid] > val then binary_search(val, low, mid-1)
+      when self[mid] < val then binary_search(val, mid+1, high)
+      else mid
+    end
+  end
+end
+
+path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
+entries = File.read(path).split("\n").sort!
+
+contents = $stdin.read
+output = contents.gsub(/[^ \n]+/) do |word|
+  if entries.binary_search(word.downcase, 0, entries.length - 1)
+    word
+  else
+    "<#{word}>"
+  end
+end
+print output

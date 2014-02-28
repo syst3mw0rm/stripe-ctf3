@@ -1,0 +1,9 @@
+Global Gitcoin ledger
+==============
+user-iigrori3: 1
+user-xni4sjpo: 17
+user-e7n2kays: 49
+user-14ntl4bc: 8
+user-bxtxr0b1: 3
+user-nivak8lr: 7
+user-89npjpup: 1
